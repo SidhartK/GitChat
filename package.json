@@ -1,0 +1,95 @@
+{
+  "name": "gitchat",
+  "displayName": "GitChat",
+  "description": "A persistent chat interface for capturing notes, Jupyter cell outputs, and checkpointing work with LLM-formatted markdown and git commits.",
+  "version": "0.0.1",
+  "publisher": "gitchat",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Notebooks",
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "gitchat-sidebar",
+          "title": "GitChat",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "gitchat-sidebar": [
+        {
+          "type": "webview",
+          "id": "gitchat.chatView",
+          "name": "GitChat"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "gitchat.captureCell",
+        "title": "Send to GitChat"
+      },
+      {
+        "command": "gitchat.checkpoint",
+        "title": "GitChat: Checkpoint"
+      },
+      {
+        "command": "gitchat.restructure",
+        "title": "GitChat: Restructure Document"
+      }
+    ],
+    "menus": {
+      "notebook/cell/title": [
+        {
+          "command": "gitchat.captureCell",
+          "when": "notebookCellHasOutputs"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "GitChat",
+      "properties": {
+        "gitchat.provider": {
+          "type": "string",
+          "enum": [
+            "anthropic",
+            "openai"
+          ],
+          "default": "anthropic",
+          "description": "LLM provider to use for formatting checkpoints and restructuring documents."
+        },
+        "gitchat.documentName": {
+          "type": "string",
+          "default": "analysis.md",
+          "description": "Name of the markdown document to append checkpoint sections to."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "node esbuild.config.mjs",
+    "watch": "node esbuild.config.mjs --watch",
+    "lint": "eslint src --ext ts",
+    "package": "vsce package"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "openai": "^4.77.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.2.0",
+    "esbuild": "^0.24.0",
+    "typescript": "^5.3.0"
+  }
+}

@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--vscode-font-family);
+  font-size: var(--vscode-font-size);
+  color: var(--vscode-editor-foreground);
+  background: var(--vscode-editor-background);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#chat-feed {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.entry-card {
+  background: var(--vscode-editorWidget-background);
+  border: 1px solid var(--vscode-editorWidget-border);
+  border-radius: 4px;
+  padding: 8px;
+  margin-bottom: 8px;
+}
+
+.entry-card .timestamp {
+  font-size: 0.8em;
+  color: var(--vscode-descriptionForeground);
+  margin-bottom: 4px;
+}
+
+.entry-card .content {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.entry-card.artifact .badge {
+  display: inline-block;
+  background: var(--vscode-badge-background);
+  color: var(--vscode-badge-foreground);
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 0.75em;
+  margin-bottom: 4px;
+}
+
+.committed-marker {
+  text-align: center;
+  color: var(--vscode-gitDecoration-addedResourceForeground, #89d185);
+  font-size: 0.85em;
+  padding: 6px;
+  border-top: 1px solid var(--vscode-editorWidget-border);
+  margin-bottom: 8px;
+}
+
+#input-area {
+  padding: 8px;
+  border-top: 1px solid var(--vscode-editorWidget-border);
+}
+
+#note-input {
+  width: 100%;
+  resize: vertical;
+  background: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+  border: 1px solid var(--vscode-input-border);
+  border-radius: 3px;
+  padding: 6px;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+#note-input::placeholder {
+  color: var(--vscode-input-placeholderForeground);
+}
+
+#actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+#actions button {
+  flex: 1;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: inherit;
+}
+
+#send-btn {
+  background: var(--vscode-button-background);
+  color: var(--vscode-button-foreground);
+}
+
+#send-btn:hover {
+  background: var(--vscode-button-hoverBackground);
+}
+
+#checkpoint-btn {
+  background: var(--vscode-button-secondaryBackground);
+  color: var(--vscode-button-secondaryForeground);
+}
+
+#checkpoint-btn:hover {
+  background: var(--vscode-button-secondaryHoverBackground);
+}
