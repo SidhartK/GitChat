@@ -8,11 +8,20 @@
 </head>
 <body>
   <div id="chat-feed"></div>
+  <div id="checkpoint-overlay">
+    <input id="checkpoint-title-input" type="text" placeholder="Checkpoint title (optional)">
+    <div class="checkpoint-actions">
+      <button id="checkpoint-go-btn">Commit</button>
+      <button id="checkpoint-cancel-btn">Cancel</button>
+    </div>
+  </div>
+  <div id="paste-preview"></div>
   <div id="input-area">
-    <textarea id="note-input" placeholder="Write a note..." rows="3"></textarea>
+    <textarea id="note-input" placeholder="Write a note... (paste images here)" rows="3"></textarea>
     <div id="actions">
       <button id="send-btn">Send</button>
       <button id="checkpoint-btn">Checkpoint</button>
+      <button id="restructure-btn" title="Restructure document">Restructure</button>
     </div>
   </div>
   <script src="main.js"></script>

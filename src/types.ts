@@ -64,11 +64,14 @@ export interface LLMProvider {
 export type WebviewToExtensionMessage =
   | { type: 'addNote'; text: string }
   | { type: 'checkpoint'; title: string }
-  | { type: 'pasteImage'; dataUrl: string };
+  | { type: 'pasteImage'; dataUrl: string }
+  | { type: 'restructure' };
 
 /** Messages sent from the extension host to the webview. */
 export type ExtensionToWebviewMessage =
   | { type: 'artifactCaptured'; data: StagedEntry }
   | { type: 'requestCheckpointTitle' }
   | { type: 'checkpointComplete'; message: string }
-  | { type: 'checkpointError'; error: string };
+  | { type: 'checkpointError'; error: string }
+  | { type: 'restructureComplete'; message: string }
+  | { type: 'restructureError'; error: string };

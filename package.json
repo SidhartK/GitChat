@@ -44,6 +44,10 @@
       {
         "command": "gitchat.restructure",
         "title": "GitChat: Restructure Document"
+      },
+      {
+        "command": "gitchat.setApiKey",
+        "title": "GitChat: Set API Key"
       }
     ],
     "menus": {
